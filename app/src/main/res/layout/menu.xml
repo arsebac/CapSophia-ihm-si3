@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.design.widget.BottomNavigationView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+
+    android:layout_gravity="center"
+    android:layout_weight="0.2"
+    android:background="?android:attr/windowBackground"
+    app:menu="@menu/navigation"
+    tools:showIn="@layout/content_magasins" />
