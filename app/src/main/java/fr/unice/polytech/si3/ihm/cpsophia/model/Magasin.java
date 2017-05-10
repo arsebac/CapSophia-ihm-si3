@@ -4,16 +4,19 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import fr.unice.polytech.si3.ihm.cpsophia.model.event.Event;
 
 /**
  * @author Francois Melkonian
  */
 
-public class Magasin {
+public class Magasin implements Serializable {
     private int id;
     private String name;
     private List<MagasinType> types;

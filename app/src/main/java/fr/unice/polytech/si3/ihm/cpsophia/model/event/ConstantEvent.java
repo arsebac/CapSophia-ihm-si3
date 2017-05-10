@@ -3,6 +3,7 @@ package fr.unice.polytech.si3.ihm.cpsophia.model.event;
 import fr.unice.polytech.si3.ihm.cpsophia.model.Magasin;
 
 /**
+ * Représente une proposition d'un magasin n'étant pas limité dans le temps
  * @author Francois Melkonian
  */
 

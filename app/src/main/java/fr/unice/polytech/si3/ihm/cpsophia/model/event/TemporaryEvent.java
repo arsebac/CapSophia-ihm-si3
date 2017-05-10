@@ -19,7 +19,7 @@ public class TemporaryEvent extends Event {
 
     @Override
     public String getStart() {
-        return date.get(Calendar.HOUR_OF_DAY)+"h"+date.get(Calendar.MINUTE);
+        return String.format(date.get(Calendar.HOUR_OF_DAY) + "h%2d" , date.get(Calendar.MINUTE));
     }
     @Override
     public String getEnd() {

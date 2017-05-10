@@ -12,19 +12,25 @@ import fr.unice.polytech.si3.ihm.cpsophia.R;
 import fr.unice.polytech.si3.ihm.cpsophia.model.utils.MapColor;
 
 /**
+ * Classe permettant de gérer la carte avec plusieurs zones différentes
  * @author Francois Melkonian
  */
 
 public class AreaMapManager {
-    private final Activity context;
     private Bitmap map;
 
+
     public AreaMapManager(Activity context) {
-        this.context = context;
         map = BitmapFactory.decodeResource(context.getResources(),
                 R.drawable.color);
     }
 
+    /**
+     * Décode la position d'un clic sur la carte pour trouver sur quel magasin le clic a été effectué
+     * @param view L'image sur laquelle le clic a été effectué
+     * @param motionEvent les informations brutes du clic
+     * @return l'identifiant du magasin sélectionné
+     */
     public int decode(View view, MotionEvent motionEvent) {
         final int evX = (int) motionEvent.getX();
         final int evY = (int) motionEvent.getY();

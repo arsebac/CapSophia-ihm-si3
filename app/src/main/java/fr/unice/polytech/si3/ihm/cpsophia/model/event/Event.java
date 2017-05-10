@@ -7,6 +7,7 @@ import java.util.Calendar;
 import fr.unice.polytech.si3.ihm.cpsophia.model.Magasin;
 
 /**
+ * Représente un évènement proposé par un magasin
  * @author Francois Melkonian
  */
 

@@ -1,18 +1,16 @@
 package fr.unice.polytech.si3.ihm.cpsophia;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.ToggleButton;
+import android.widget.*;
 
 import java.util.List;
 
+import fr.unice.polytech.si3.ihm.cpsophia.activities.DetailMagasinActivity;
 import fr.unice.polytech.si3.ihm.cpsophia.model.Magasin;
 import fr.unice.polytech.si3.ihm.cpsophia.model.persistence.UserPreferences;
 
@@ -38,23 +36,31 @@ public class MagasinsAdapter extends ArrayAdapter<Magasin> {
         }
         ((TextView) convertView.findViewById(R.id.desc)).setText(magasin.getDesc());
         final boolean followed = UserPreferences.isFollowed(magasin);
-        convertView.findViewById(R.id.toggleNotification).setOnClickListener(new View.OnClickListener() {
-            boolean activated = followed;
+        ((Switch) convertView.findViewById(R.id.toggleNotification)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
-                activated = !activated;
-                if(activated){
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
                     UserPreferences.addFollow(magasin);
                 }else{
                     UserPreferences.deFollow(magasin);
-                }
             }
-        });
+                UserPreferences.save(getContext());
+        }});
         if(followed){
             ((Switch) convertView.findViewById(R.id.toggleNotification)).setChecked(true);
         }else{
             ((Switch) convertView.findViewById(R.id.toggleNotification)).setChecked(false);
         }
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), DetailMagasinActivity.class);
+                i.putExtra("magasin",magasin);
+                getContext().startActivity(i);
+
+            }
+        });
         return convertView;
     }
 }
