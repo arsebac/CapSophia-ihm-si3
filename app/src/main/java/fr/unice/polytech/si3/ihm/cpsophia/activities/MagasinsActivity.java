@@ -12,12 +12,11 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import java.util.List;
 
 import fr.unice.polytech.si3.ihm.cpsophia.BottomNavigationManager;
-import fr.unice.polytech.si3.ihm.cpsophia.MagasinsAdapter;
+import fr.unice.polytech.si3.ihm.cpsophia.adapters.MagasinsAdapter;
 import fr.unice.polytech.si3.ihm.cpsophia.R;
 import fr.unice.polytech.si3.ihm.cpsophia.model.CapSophia;
 import fr.unice.polytech.si3.ihm.cpsophia.model.Magasin;

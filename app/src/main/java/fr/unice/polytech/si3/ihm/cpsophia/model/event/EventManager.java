@@ -30,11 +30,11 @@ public class EventManager {
 		}
 		Magasin magasinById = CapSophia.getMagasinById(1);
 		List<Event> event = events.get(magasinById);
+		event.add(new TemporaryEvent("10% sur les pizza sans pates !", magasinById, CalendarHelper.create(5, 10, 14,6,0), CalendarHelper.create(5, 10, 14,50,0)));
+		event.add(new TemporaryEvent("10% sur les pizza sans salades !", magasinById, CalendarHelper.create(4, 21, 20), CalendarHelper.create(4, 21, 22)));
 		event.add(new TemporaryEvent("10% sur les pizza sans tomates !", magasinById, CalendarHelper.create(4, 21, 20), CalendarHelper.create(4, 21, 22)));
-		event.add(new TemporaryEvent("10% sur les pizza sans tomates !", magasinById, CalendarHelper.create(4, 21, 20), CalendarHelper.create(4, 21, 22)));
-		event.add(new TemporaryEvent("10% sur les pizza sans tomates !", magasinById, CalendarHelper.create(4, 21, 20), CalendarHelper.create(4, 21, 22)));
-		event.add(new TemporaryEvent("10% sur les pizza sans tomates !", magasinById, CalendarHelper.create(4, 21, 20), CalendarHelper.create(4, 21, 22)));
-		event.add(new TemporaryEvent("10% sur les pizza sans tomates !", magasinById, CalendarHelper.create(4, 21, 20), CalendarHelper.create(4, 21, 22)));
+		event.add(new TemporaryEvent("10% sur les pâtes sans sauce !", magasinById, CalendarHelper.create(4, 21, 20), CalendarHelper.create(4, 21, 22)));
+		event.add(new TemporaryEvent("Anniversaire de Manu !", magasinById, CalendarHelper.create(4, 21, 20), CalendarHelper.create(4, 21, 22)));
 		event.add(new TemporaryEvent("Les ingrédients des plats servis seront choisis par référendum", magasinById, CalendarHelper.create(4, 22, 14), CalendarHelper.create(4, 22, 18)));
 	}
 

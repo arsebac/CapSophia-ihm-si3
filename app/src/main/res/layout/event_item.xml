@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:text="Le :"/>
+                android:text="@string/from"/>
 
         <TextView
                 android:id="@+id/day"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:text="21 avril"/>
+                android:text="@string/example_date"/>
     </LinearLayout>
 
     <LinearLayout
@@ -51,14 +51,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
                         android:layout_weight="1"
-                        android:text="De :"/>
+                        android:text="@string/from"/>
 
                 <TextView
                         android:id="@+id/dtstart"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="00h00"/>
+                        android:text="@string/example_hour_midnight"/>
             </LinearLayout>
             <LinearLayout
                     android:layout_width="match_parent"
@@ -72,19 +72,19 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
                         android:layout_weight="1"
-                        android:text="A :"/>
+                        android:text="@string/date_to"/>
 
                 <TextView
                         android:id="@+id/dtEnd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="00h00"/>
+                        android:text="@string/example_hour_midnight"/>
 
             </LinearLayout>
         </LinearLayout>
         <Switch
-                android:text="Participer"
+                android:text="@string/participate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/participate" android:layout_weight="1"
                 android:layout_marginEnd="5dp"

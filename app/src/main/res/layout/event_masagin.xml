@@ -13,14 +13,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.44"
-                android:text="Evènements du magasin"/>
+                android:text="@string/mag_event"/>
 
         <TextView
                 android:id="@+id/magasin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=" Magasin"/>
+                android:text="@string/magasin"/>
     </LinearLayout>
 
 </LinearLayout>

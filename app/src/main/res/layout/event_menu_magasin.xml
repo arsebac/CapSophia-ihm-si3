@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="Evènements de "/>
+            android:text="@string/event_from"/>
 
     <TextView
             android:layout_gravity="center"
@@ -30,6 +30,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.55"
-            android:text="Magasin"/>
+            android:text="@string/magasin"/>
 
 </LinearLayout>

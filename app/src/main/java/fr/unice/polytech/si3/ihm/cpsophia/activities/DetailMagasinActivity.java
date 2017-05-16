@@ -1,21 +1,15 @@
 package fr.unice.polytech.si3.ihm.cpsophia.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import fr.unice.polytech.si3.ihm.cpsophia.EventAdapter;
+import fr.unice.polytech.si3.ihm.cpsophia.adapters.EventAdapter;
 import fr.unice.polytech.si3.ihm.cpsophia.R;
 import fr.unice.polytech.si3.ihm.cpsophia.model.Magasin;
-import fr.unice.polytech.si3.ihm.cpsophia.model.event.Event;
 import fr.unice.polytech.si3.ihm.cpsophia.model.event.EventManager;
-
-import java.util.ArrayList;
 
 public class DetailMagasinActivity extends AppCompatActivity {
 
@@ -32,7 +26,7 @@ public class DetailMagasinActivity extends AppCompatActivity {
 		((TextView) findViewById(R.id.desc)).setText(magasin.getDesc());
 		ListView v = (ListView) findViewById(R.id.list_event);
 		System.out.println(EventManager.get(magasin));
-		EventAdapter adapter = new EventAdapter(this, android.R.layout.simple_list_item_1, EventManager.get(magasin));
+		EventAdapter adapter = new EventAdapter(this, android.R.layout.simple_list_item_1, EventManager.get(magasin),false);
 		v.setAdapter(adapter);
 
 	}

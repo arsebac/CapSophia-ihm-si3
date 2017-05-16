@@ -1,26 +1,19 @@
 package fr.unice.polytech.si3.ihm.cpsophia.activities;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import fr.unice.polytech.si3.ihm.cpsophia.BottomNavigationManager;
-import fr.unice.polytech.si3.ihm.cpsophia.EventAdapter;
+import fr.unice.polytech.si3.ihm.cpsophia.adapters.EventAdapter;
 import fr.unice.polytech.si3.ihm.cpsophia.R;
 import fr.unice.polytech.si3.ihm.cpsophia.model.CapSophia;
 import fr.unice.polytech.si3.ihm.cpsophia.model.Magasin;
@@ -38,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ListView v = (ListView) findViewById(R.id.listActivites);
-        adapter = new EventAdapter(this, android.R.layout.simple_list_item_1, new ArrayList<Event>());
+        adapter = new EventAdapter(this, android.R.layout.simple_list_item_1, new ArrayList<Event>(),true);
         v.setAdapter(adapter);
         final AreaMapManager mapManager = new AreaMapManager(this);
         new BottomNavigationManager(this,getClass());

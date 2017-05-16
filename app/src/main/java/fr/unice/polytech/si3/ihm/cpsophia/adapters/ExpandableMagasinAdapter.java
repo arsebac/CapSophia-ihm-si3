@@ -1,19 +1,23 @@
-package fr.unice.polytech.si3.ihm.cpsophia;
+package fr.unice.polytech.si3.ihm.cpsophia.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fr.unice.polytech.si3.ihm.cpsophia.R;
 import fr.unice.polytech.si3.ihm.cpsophia.model.Magasin;
 import fr.unice.polytech.si3.ihm.cpsophia.model.event.Event;
+import fr.unice.polytech.si3.ihm.cpsophia.model.persistence.UserPreferences;
 
 
 /**
@@ -95,8 +99,18 @@ public class ExpandableMagasinAdapter extends BaseExpandableListAdapter {
             view = inflater.inflate(R.layout.event_item, viewGroup, false);
 
         }
-
-        Event event = (Event)getChild(i, i1);
+        final Event event = (Event)getChild(i, i1);
+        ((Switch) view.findViewById(R.id.participate)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                System.out.println("c moii");
+                if(b){
+                    UserPreferences.addEvent(event,context);
+                }else{
+                    UserPreferences.removeEvent(event,context);
+                }
+            }
+        });
 
         ((TextView) view.findViewById(R.id.eventName)).setText(event.getName());
         ((TextView) view.findViewById(R.id.day)).setText(event.getDay());

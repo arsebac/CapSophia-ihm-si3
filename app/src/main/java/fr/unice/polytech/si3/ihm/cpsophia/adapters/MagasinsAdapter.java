@@ -1,4 +1,4 @@
-package fr.unice.polytech.si3.ihm.cpsophia;
+package fr.unice.polytech.si3.ihm.cpsophia.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.widget.*;
 
 import java.util.List;
 
+import fr.unice.polytech.si3.ihm.cpsophia.R;
 import fr.unice.polytech.si3.ihm.cpsophia.activities.DetailMagasinActivity;
 import fr.unice.polytech.si3.ihm.cpsophia.model.Magasin;
 import fr.unice.polytech.si3.ihm.cpsophia.model.persistence.UserPreferences;

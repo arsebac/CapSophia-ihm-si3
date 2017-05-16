@@ -12,4 +12,16 @@
     <string name="title_activity_trajet">Se rendre à C@P SOPHIA</string>
     <string name="title_activity_maps">C@p Sophia</string>
     <string name="title_activity_detail_magasin">Détails</string>
+    <string name="select_magasin_verbose">Sélectionnez un magasin pour obtenir des informations</string>
+    <string name="mag_event">Evènements du magasin</string>
+    <string name="magasin">Magasin</string>
+    <string name="event_from">Evènements de</string>
+    <string name="example_open_hour">8:00 à 12:00</string>
+    <string name="notifications">Notifications</string>
+    <string name="example_mag_desc">Description du magasin</string>
+    <string name="from">Le :</string>
+    <string name="example_date">21 avril</string>
+    <string name="example_hour_midnight">00h00</string>
+    <string name="date_to">A :</string>
+    <string name="participate">Participer</string>
 </resources>
