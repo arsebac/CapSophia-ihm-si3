@@ -11,14 +11,20 @@
         android:orientation="vertical" android:weightSum="1">
 
     <TextView
-            android:text="Magasin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/name_magasin"
-            android:textStyle="bold" android:textAlignment="center" android:textSize="24sp"/>
+        android:id="@+id/name_magasin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Magasin"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
     <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_home_black_24dp"
-            android:id="@+id/icon_magasin" android:layout_weight="0.08"/>
+        android:id="@+id/icon_magasin"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="0.08"
+        app:srcCompat="@drawable/ic_home_black_24dp" />
     <TextView
             android:text="Description"
             android:layout_width="match_parent"

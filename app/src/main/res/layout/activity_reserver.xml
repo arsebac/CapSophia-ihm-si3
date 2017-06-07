@@ -16,12 +16,15 @@
 
 
         <ExpandableListView
-                android:id="@+id/listReserve"
-                android:layout_width="match_parent"
-                android:divider="#FF0000"
-                android:dividerHeight="1dp"
-                android:layout_height="520dp"/>
-        <include layout="@layout/menu" android:layout_height="match_parent" android:layout_width="match_parent"/>
+            android:id="@+id/listReserve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dividerHeight="1dp" />
+
+        <include
+            layout="@layout/menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

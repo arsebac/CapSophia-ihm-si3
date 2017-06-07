@@ -10,25 +10,26 @@
             android:text="Event"/>
 
     <LinearLayout
-            android:layout_width="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0.47"
+            android:text="@string/from" />
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:text="@string/from"/>
-
-        <TextView
-                android:id="@+id/day"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:text="@string/example_date"/>
+            android:id="@+id/day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0.56"
+            android:text="@string/example_date"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -73,22 +74,25 @@
                         android:layout_marginEnd="10dp"
                         android:layout_weight="1"
                         android:text="@string/date_to"/>
-
                 <TextView
                         android:id="@+id/dtEnd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/example_hour_midnight"/>
-
             </LinearLayout>
         </LinearLayout>
+
         <Switch
-                android:text="@string/participate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/participate" android:layout_weight="1"
-                android:layout_marginEnd="5dp"
-                android:textStyle="bold" android:textAlignment="center"/>
+            android:id="@+id/participate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:text="@string/participate"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

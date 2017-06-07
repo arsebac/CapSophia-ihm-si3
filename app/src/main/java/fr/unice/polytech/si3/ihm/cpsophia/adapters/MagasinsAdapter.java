@@ -13,6 +13,7 @@ import java.util.List;
 import fr.unice.polytech.si3.ihm.cpsophia.R;
 import fr.unice.polytech.si3.ihm.cpsophia.activities.DetailMagasinActivity;
 import fr.unice.polytech.si3.ihm.cpsophia.model.Magasin;
+import fr.unice.polytech.si3.ihm.cpsophia.model.event.EventManager;
 import fr.unice.polytech.si3.ihm.cpsophia.model.persistence.UserPreferences;
 
 /**
@@ -42,6 +43,7 @@ public class MagasinsAdapter extends ArrayAdapter<Magasin> {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
                     UserPreferences.addFollow(magasin);
+                    UserPreferences.addNotifications(EventManager.get(magasin),getContext());
                 }else{
                     UserPreferences.deFollow(magasin);
             }

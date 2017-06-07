@@ -1,6 +1,7 @@
 package fr.unice.polytech.si3.ihm.cpsophia.model.event;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 import fr.unice.polytech.si3.ihm.cpsophia.model.Magasin;
 
@@ -19,12 +20,11 @@ public class TemporaryEvent extends Event {
 
     @Override
     public String getStart() {
-        return String.format(date.get(Calendar.HOUR_OF_DAY) + "h%2d" , date.get(Calendar.MINUTE));
+        return String.format(Locale.FRANCE,"%02dh%02d", date.get(Calendar.HOUR_OF_DAY),date.get(Calendar.MINUTE));
     }
     @Override
     public String getEnd() {
-        int i = dtend.get(Calendar.MINUTE);
-        return dtend.get(Calendar.HOUR_OF_DAY)+"h"+ (i<9?"":i);
+        return String.format(Locale.FRANCE,"%02dh%02d", dtend.get(Calendar.HOUR_OF_DAY),dtend.get(Calendar.MINUTE));
     }
     @Override
     public String getDay() {

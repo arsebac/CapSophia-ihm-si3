@@ -1,5 +1,6 @@
 package fr.unice.polytech.si3.ihm.cpsophia.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
@@ -56,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
     }
-    private void displayDetail(Magasin magasin){
+    private void displayDetail(final Magasin magasin){
         FrameLayout parent = ((FrameLayout) findViewById(R.id.info));
         parent.removeAllViews();
         View v = View.inflate(this,R.layout.magasin_item,null);
@@ -66,6 +67,14 @@ public class HomeActivity extends AppCompatActivity {
         if(magasin.isHaveImage()){
             ((ImageView) v.findViewById(R.id.logo)).setImageBitmap(magasin.getImage(this));
         }
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),DetailMagasinActivity.class);
+                i.putExtra("magasin",magasin);
+                startActivity(i);
+            }
+        });
         parent.addView(v);
     }
     @Override

@@ -36,6 +36,7 @@ public class EventManager {
 		event.add(new TemporaryEvent("10% sur les pâtes sans sauce !", magasinById, CalendarHelper.create(4, 21, 20), CalendarHelper.create(4, 21, 22)));
 		event.add(new TemporaryEvent("Anniversaire de Manu !", magasinById, CalendarHelper.create(4, 21, 20), CalendarHelper.create(4, 21, 22)));
 		event.add(new TemporaryEvent("Les ingrédients des plats servis seront choisis par référendum", magasinById, CalendarHelper.create(4, 22, 14), CalendarHelper.create(4, 22, 18)));
+
 	}
 
 	/**
@@ -59,4 +60,5 @@ public class EventManager {
 		init();
 		return events;
 	}
+
 }

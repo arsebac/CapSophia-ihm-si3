@@ -15,6 +15,7 @@ import fr.unice.polytech.si3.ihm.cpsophia.model.CapSophia;
 import fr.unice.polytech.si3.ihm.cpsophia.model.Magasin;
 import fr.unice.polytech.si3.ihm.cpsophia.model.MagasinType;
 import fr.unice.polytech.si3.ihm.cpsophia.model.event.Event;
+import fr.unice.polytech.si3.ihm.cpsophia.model.event.EventManager;
 import fr.unice.polytech.si3.ihm.cpsophia.notification.Receiver;
 
 /**
@@ -36,6 +37,7 @@ public class UserPreferences {
     public static void addFollow(Magasin mag){
         if(!followedMagasin.contains(mag))
             followedMagasin.add(mag);
+
     }
     public static void deFollow(Magasin mag){
         if(followedMagasin.contains(mag)){
@@ -85,7 +87,6 @@ public class UserPreferences {
 
     public static void addEvent(Event event, Context context) {
         if(!events.contains(event)){
-
             events.add(event);
             addNotification(event,context);
         }
@@ -96,6 +97,14 @@ public class UserPreferences {
             events.remove(event);
         }
         // TODO : supprimer l'event des alarmes
+
+    }
+
+    public static void addNotifications(List<Event >event, Context context){
+        for (Event e :
+                event) {
+            addNotification(e, context);
+        }
 
     }
     public static void addNotification(Event event, Context context){

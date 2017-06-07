@@ -103,7 +103,6 @@ public class ExpandableMagasinAdapter extends BaseExpandableListAdapter {
         ((Switch) view.findViewById(R.id.participate)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                System.out.println("c moii");
                 if(b){
                     UserPreferences.addEvent(event,context);
                 }else{
