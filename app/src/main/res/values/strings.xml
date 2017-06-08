@@ -24,4 +24,11 @@
     <string name="example_hour_midnight">00h00</string>
     <string name="date_to">A :</string>
     <string name="participate">Participer</string>
+
+    <string name="event_notification_title_template">Event: %1$s</string>
+
+
+    <string name="action_share">Partager</string>
+    <string name="action_reply">Se rendre au magasin</string>
+    <string name="plan_du_site">Plan du site</string>
 </resources>

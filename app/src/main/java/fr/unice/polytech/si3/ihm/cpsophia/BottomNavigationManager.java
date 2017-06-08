@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 
-import fr.unice.polytech.si3.ihm.cpsophia.activities.MagasinsActivity;
 import fr.unice.polytech.si3.ihm.cpsophia.model.persistence.MenuEnum;
 
 /**
@@ -16,16 +15,6 @@ import fr.unice.polytech.si3.ihm.cpsophia.model.persistence.MenuEnum;
 public class BottomNavigationManager {
     private Activity context;
     private BottomNavigationView view;
-
-    public BottomNavigationManager(Activity context,Class<?> contro) {
-        this.context = context;
-        view =  (BottomNavigationView) context.findViewById(R.id.navigation);
-        int id = MenuEnum.getResId(contro);
-        view.findViewById(id).performClick();
-        view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-    }
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -40,8 +29,13 @@ public class BottomNavigationManager {
         }
 
     };
-    public static void runMain(Activity activity){
-        Intent i = new Intent(activity,MagasinsActivity.class);
-        activity.startActivity(i);
+
+    public BottomNavigationManager(Activity context, Class<?> contro) {
+        this.context = context;
+        view = (BottomNavigationView) context.findViewById(R.id.navigation);
+        int id = MenuEnum.getResId(contro);
+        view.findViewById(id).performClick();
+        view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
     }
 }

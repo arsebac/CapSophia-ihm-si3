@@ -1,7 +1,6 @@
 package fr.unice.polytech.si3.ihm.cpsophia.activities;
 
 import android.os.Bundle;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -9,6 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -16,8 +16,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import fr.unice.polytech.si3.ihm.cpsophia.BottomNavigationManager;
-import fr.unice.polytech.si3.ihm.cpsophia.adapters.MagasinsAdapter;
 import fr.unice.polytech.si3.ihm.cpsophia.R;
+import fr.unice.polytech.si3.ihm.cpsophia.adapters.MagasinsAdapter;
 import fr.unice.polytech.si3.ihm.cpsophia.model.CapSophia;
 import fr.unice.polytech.si3.ihm.cpsophia.model.Magasin;
 import fr.unice.polytech.si3.ihm.cpsophia.model.MagasinType;
@@ -35,7 +35,6 @@ public class MagasinsActivity extends AppCompatActivity
         setContentView(R.layout.activity_magasins);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -46,34 +45,41 @@ public class MagasinsActivity extends AppCompatActivity
         UserPreferences.load(this);
         ListView v = ((ListView) findViewById(R.id.magasinsList));
         selected = new MagasinsAdapter(this, android.R.layout.simple_list_item_1, CapSophia.getMagasins());
+
         v.setAdapter(selected);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         setActualFilter(MagasinType.TOUT_LES_MAGASINS);
-        new BottomNavigationManager(this,getClass());
+        new BottomNavigationManager(this, getClass());
 
     }
-    private void setActualFilter(final MagasinType type){
+
+    private void setActualFilter(final MagasinType type) {
         final boolean followedFilter = UserPreferences.isFollowed(type);
         toggleFilter.setChecked(followedFilter);
-        if(followedFilter){
+        if (followedFilter) {
             toggleFilter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     UserPreferences.deFollow(type);
                     UserPreferences.save(getApplicationContext());
+                    selected.notifyDataSetChanged();
+
                 }
             });
-        }else{
+        } else {
             toggleFilter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    UserPreferences.addFollow(type);
+                    UserPreferences.addFollow(type, CapSophia.getFiltredMagasin(type));
                     UserPreferences.save(getApplicationContext());
+                    selected.notifyDataSetChanged();
                 }
             });
         }
+
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

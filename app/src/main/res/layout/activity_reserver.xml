@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
@@ -9,10 +8,10 @@
     tools:context="fr.unice.polytech.si3.ihm.cpsophia.activities.ReserverActivity">
 
     <LinearLayout
-            android:orientation="vertical"
-            android:id="@+id/content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
         <ExpandableListView
@@ -21,10 +20,8 @@
             android:layout_height="wrap_content"
             android:dividerHeight="1dp" />
 
-        <include
-            layout="@layout/menu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+
+        <include layout="@layout/menu" />
 
     </LinearLayout>
 

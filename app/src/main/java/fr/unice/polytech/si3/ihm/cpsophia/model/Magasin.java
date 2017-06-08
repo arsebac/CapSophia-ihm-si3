@@ -8,8 +8,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.os.Parcel;
-import android.os.Parcelable;
 import fr.unice.polytech.si3.ihm.cpsophia.model.event.Event;
 
 /**
@@ -24,13 +22,15 @@ public class Magasin implements Serializable {
     private String desc;
     private int image;
     private boolean haveImage;
-    public Magasin(int id,String name, List<MagasinType> types, String desc,int image) {
+
+    public Magasin(int id, String name, List<MagasinType> types, String desc, int image) {
         this(id, name, types, desc);
         this.image = image;
         haveImage = true;
 
     }
-    public Magasin(int id,String name, List<MagasinType> types, String desc) {
+
+    public Magasin(int id, String name, List<MagasinType> types, String desc) {
         this.id = id;
         this.name = name;
 
@@ -83,10 +83,12 @@ public class Magasin implements Serializable {
         result = 31 * result + types.hashCode();
         return result;
     }
-    public int getImageId(){
+
+    public int getImageId() {
         return image;
     }
+
     public Bitmap getImage(Context context) {
-        return BitmapFactory.decodeResource(context.getResources(),image);
+        return BitmapFactory.decodeResource(context.getResources(), image);
     }
 }

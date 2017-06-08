@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -78,42 +77,42 @@ public class ExpandableMagasinAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
-        if(view == null){
-            LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if (view == null) {
+            LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.event_menu_magasin, viewGroup, false);
         }
         Magasin parentHeader = (Magasin) getGroup(i);
-        ((TextView)view.findViewById(R.id.magasinName)).setText(parentHeader.getName());
-        if(parentHeader.isHaveImage()){
-            ((ImageView)view.findViewById(R.id.logo)).setImageBitmap(parentHeader.getImage(context));
+        ((TextView) view.findViewById(R.id.magasinName)).setText(parentHeader.getName());
+        if (parentHeader.isHaveImage()) {
+            ((ImageView) view.findViewById(R.id.logo)).setImageBitmap(parentHeader.getImage(context));
         }
         return view;
     }
 
     @Override
     public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
-        if(view == null){
+        if (view == null) {
 
-            LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             view = inflater.inflate(R.layout.event_item, viewGroup, false);
 
         }
-        final Event event = (Event)getChild(i, i1);
+        final Event event = (Event) getChild(i, i1);
         ((Switch) view.findViewById(R.id.participate)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    UserPreferences.addEvent(event,context);
-                }else{
-                    UserPreferences.removeEvent(event,context);
+                if (b) {
+                    UserPreferences.addEvent(event, context);
+                } else {
+                    UserPreferences.removeEvent(event, context);
                 }
             }
         });
 
         ((TextView) view.findViewById(R.id.eventName)).setText(event.getName());
         ((TextView) view.findViewById(R.id.day)).setText(event.getDay());
-        if(event.hasEnd()){
+        if (event.hasEnd()) {
             ((TextView) view.findViewById(R.id.dtstart)).setText(event.getStart());
             ((TextView) view.findViewById(R.id.dtEnd)).setText(event.getEnd());
         }

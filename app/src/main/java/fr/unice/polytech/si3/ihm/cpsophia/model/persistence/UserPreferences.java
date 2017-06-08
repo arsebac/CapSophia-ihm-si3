@@ -15,7 +15,6 @@ import fr.unice.polytech.si3.ihm.cpsophia.model.CapSophia;
 import fr.unice.polytech.si3.ihm.cpsophia.model.Magasin;
 import fr.unice.polytech.si3.ihm.cpsophia.model.MagasinType;
 import fr.unice.polytech.si3.ihm.cpsophia.model.event.Event;
-import fr.unice.polytech.si3.ihm.cpsophia.model.event.EventManager;
 import fr.unice.polytech.si3.ihm.cpsophia.notification.Receiver;
 
 /**
@@ -23,28 +22,32 @@ import fr.unice.polytech.si3.ihm.cpsophia.notification.Receiver;
  */
 
 public class UserPreferences {
+    public static final List<Event> events = new ArrayList<>();
     private static final String PREFS_NAME = "user_preferences";
     private static final UserPreferences ourInstance = new UserPreferences();
     private static final List<Magasin> followedMagasin = new ArrayList<>();
     private static final List<MagasinType> followedType = new ArrayList<>();
-    public static final List<Event> events = new ArrayList<>();
+
+    private UserPreferences() {
+    }
+
     static UserPreferences getInstance() {
         return ourInstance;
     }
 
-    private UserPreferences() {
-    }
-    public static void addFollow(Magasin mag){
-        if(!followedMagasin.contains(mag))
+    public static void addFollow(Magasin mag) {
+        if (!followedMagasin.contains(mag))
             followedMagasin.add(mag);
 
     }
-    public static void deFollow(Magasin mag){
-        if(followedMagasin.contains(mag)){
+
+    public static void deFollow(Magasin mag) {
+        if (followedMagasin.contains(mag)) {
             followedMagasin.remove(mag);
         }
     }
-    public static boolean isFollowed(Magasin mag){
+
+    public static boolean isFollowed(Magasin mag) {
         return followedMagasin.contains(mag);
     }
 
@@ -53,15 +56,30 @@ public class UserPreferences {
     }
 
     public static void deFollow(MagasinType type) {
-        if(followedType.contains(type)){
+        if (followedType.contains(type)) {
             followedType.remove(type);
+            for (Magasin magasin :
+                    followedMagasin) {
+                if (magasin.isType(type)) followedMagasin.remove(magasin);
+            }
         }
     }
-    public static void addFollow(MagasinType type){
-        if(!followedType.contains(type))
+
+    public static void addFollow(MagasinType type, List<Magasin> filtredMagasin) {
+        if (!followedType.contains(type)) {
             followedType.add(type);
+        }
+        for (Magasin mag :
+                filtredMagasin) {
+            if (!followedMagasin.contains(mag)) {
+                addFollow(mag);
+
+            }
+        }
+
     }
-    public static void save(Context context){
+
+    public static void save(Context context) {
         SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("if_exist", true);
@@ -71,7 +89,8 @@ public class UserPreferences {
         }
         editor.apply();
     }
-    public static void load(Activity context){
+
+    public static void load(Activity context) {
         SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
         boolean silent = settings.getBoolean("if_exist", false);
 
@@ -86,37 +105,38 @@ public class UserPreferences {
     }
 
     public static void addEvent(Event event, Context context) {
-        if(!events.contains(event)){
+        if (!events.contains(event)) {
             events.add(event);
-            addNotification(event,context);
+            addNotification(event, context);
         }
     }
 
     public static void removeEvent(Event event, Context context) {
-        if(events.contains(event)){
+        if (events.contains(event)) {
             events.remove(event);
         }
         // TODO : supprimer l'event des alarmes
 
+
     }
 
-    public static void addNotifications(List<Event >event, Context context){
+    public static void addNotifications(List<Event> event, Context context) {
         for (Event e :
                 event) {
             addNotification(e, context);
         }
 
     }
-    public static void addNotification(Event event, Context context){
-        AlarmManager alarms = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-        Receiver receiver = new Receiver();
+
+    public static void addNotification(Event event, Context context) {
+        AlarmManager alarms = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Receiver receiver = new Receiver(event);
         IntentFilter filter = new IntentFilter("ALARM_ACTION");
         context.registerReceiver(receiver, filter);
 
         Intent intent = new Intent("ALARM_ACTION");
-        intent.putExtra("event",event);
+        intent.putExtra("event", event);
         PendingIntent operation = PendingIntent.getBroadcast(context, 0, intent, 0);
-        // I choose 3s after the launch of my application
-        alarms.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+3000, operation) ;
+        alarms.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 3000, operation);
     }
 }

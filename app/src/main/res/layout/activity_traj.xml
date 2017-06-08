@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
@@ -8,50 +7,22 @@
     android:orientation="vertical"
     tools:context="fr.unice.polytech.si3.ihm.cpsophia.activities.TrajetActivity">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/telLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_weight="1"
-            android:text="Téléphone"
-            android:textAppearance="@android:style/TextAppearance.Material.Large" />
-
-        <TextView
-            android:id="@+id/tel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:layout_weight="1"
-            android:text="04 97 21 11 98"
-            android:textAlignment="textEnd" />
-
-    </LinearLayout>
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="Informations"
+        android:textAlignment="center"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_weight="1"
-            android:text="Adresse"
-            android:textAppearance="@android:style/TextAppearance.Material.Large" />
 
         <TextView
             android:id="@+id/addr"
@@ -60,14 +31,25 @@
             android:layout_marginEnd="20dp"
             android:layout_weight="1"
             android:text=" 2 Rue Soutrane,\n 06560 Valbonne"
-            android:textAlignment="textEnd" />
+            android:textAlignment="center" />
+
+
+        <TextView
+            android:id="@+id/tel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:text="04 97 21 11 98"
+            android:textAlignment="center" />
+
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/estimatedDiv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/estimatedDiv"
         android:visibility="gone">
 
         <TextView
@@ -95,13 +77,27 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/itineraireButton"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:visibility="gone"
-        android:text="Route à prendre" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/pied"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="S'y rendre à pied" />
+
+        <Button
+            android:id="@+id/voiture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="S'y rendre en voiture" />
+    </LinearLayout>
+
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
@@ -112,8 +108,7 @@
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
     </FrameLayout>
 
 

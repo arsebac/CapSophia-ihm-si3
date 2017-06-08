@@ -6,7 +6,11 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.ImageView;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -24,6 +28,7 @@ public class MagasinsAdapter extends ArrayAdapter<Magasin> {
     public MagasinsAdapter(Context context, int resource, List<Magasin> objects) {
         super(context, resource, 0, objects);
     }
+
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -33,7 +38,7 @@ public class MagasinsAdapter extends ArrayAdapter<Magasin> {
             convertView = inflater.inflate(R.layout.magasin_item, null);
         }
         ((TextView) convertView.findViewById(R.id.magasinName)).setText(magasin.getName());
-        if(magasin.isHaveImage()){
+        if (magasin.isHaveImage()) {
             ((ImageView) convertView.findViewById(R.id.logo)).setImageBitmap(magasin.getImage(parent.getContext()));
         }
         ((TextView) convertView.findViewById(R.id.desc)).setText(magasin.getDesc());
@@ -41,17 +46,18 @@ public class MagasinsAdapter extends ArrayAdapter<Magasin> {
         ((Switch) convertView.findViewById(R.id.toggleNotification)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
+                if (isChecked) {
                     UserPreferences.addFollow(magasin);
-                    UserPreferences.addNotifications(EventManager.get(magasin),getContext());
-                }else{
+                    UserPreferences.addNotifications(EventManager.get(magasin), getContext());
+                } else {
                     UserPreferences.deFollow(magasin);
-            }
+                }
                 UserPreferences.save(getContext());
-        }});
-        if(followed){
+            }
+        });
+        if (followed) {
             ((Switch) convertView.findViewById(R.id.toggleNotification)).setChecked(true);
-        }else{
+        } else {
             ((Switch) convertView.findViewById(R.id.toggleNotification)).setChecked(false);
         }
 
@@ -59,7 +65,7 @@ public class MagasinsAdapter extends ArrayAdapter<Magasin> {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), DetailMagasinActivity.class);
-                i.putExtra("magasin",magasin);
+                i.putExtra("magasin", magasin);
                 getContext().startActivity(i);
 
             }

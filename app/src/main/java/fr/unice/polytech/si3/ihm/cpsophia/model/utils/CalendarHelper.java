@@ -7,13 +7,17 @@ import java.util.Calendar;
  */
 
 public class CalendarHelper {
-    public static Calendar create(int month, int day, int hour){
-        return create(month,day,hour,0,0);
+    public static Calendar create(int month, int day, int hour) {
+        return create(month, day, hour, 0, 0);
     }
 
-    public static Calendar create(int month, int day, int hour, int min, int secondes){
+    public static Calendar create(int month, int day, int hour, int min, int secondes) {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2017,month,day,hour,min,secondes);
+        calendar.set(Calendar.DAY_OF_MONTH, day);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.MINUTE, min);
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.SECOND, secondes);
         return calendar;
     }
 }

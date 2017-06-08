@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:weightSum="1.0">
 
 
@@ -18,10 +18,10 @@
             android:id="@+id/filtreSelected"
             android:layout_width="189dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1.05"
             android:text="Tout les magasins"
             android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:layout_weight="1.05" />
+            android:textStyle="bold" />
 
         <Switch
             android:id="@+id/toggleFilter"
@@ -37,7 +37,6 @@
         android:layout_height="0dp"
         android:layout_weight="0.8" />
 
-    <include layout="@layout/menu"
-        android:layout_height="match_parent" />
+    <include layout="@layout/menu" />
 
 </LinearLayout>
